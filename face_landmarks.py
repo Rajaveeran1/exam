@@ -5,6 +5,7 @@ from tensorflow import keras
 
 def get_landmark_model(saved_model="models/pose_model"):
     model = keras.models.load_model(saved_model)
+    #print("hhhh",model.summary())
     return model
 
 def get_square_box(box):

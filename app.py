@@ -28,23 +28,34 @@ from flask_session import Session
 from flask_cors import CORS, cross_origin
 import camera
 
+
+
+
 app = Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PORT'] = 3308
-app.config['MYSQL_PASSWORD'] = 'your pwd'
+app.config['MYSQL_PASSWORD'] = '#Rv12345'
 app.config['MYSQL_DB'] = 'quizapp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-app.config['MAIL_SERVER']='smtp.stackmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'care@youremail.com'
-app.config['MAIL_PASSWORD'] = 'password'
+# app.config['MAIL_SERVER']='smtp.stackmail.com'
+# app.config['MAIL_PORT'] = 587
+# app.config['MAIL_USERNAME'] = 'rajaveeranscode@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'bqgnapxkawbgzbvo'  #bqgn apxk awbg zbvo
+# app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USE_SSL'] = False
+
+app.config['MAIL_SERVER'] = 'smtp.stackmail.com'
+app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'indine287@gmail.com'
+app.config['MAIL_PASSWORD'] = 'hmimfokunsqnborj'  # Use your actual password or application-specific password
 
-app.config['SESSION_COOKIE_SAMESITE'] = "None"
+
+app.config['SESSION_COOKIE_SAMESITE'] = "Strict"
 
 app.config['SESSION_TYPE'] = 'filesystem'
 
@@ -69,7 +80,7 @@ app.secret_key= 'sem6project'
 
 mysql = MySQL(app)
 
-sender = 'youremail@abc.com'
+sender = 'indine287@gmail.com'
 
 YOUR_DOMAIN = 'http://localhost:5000'
 
@@ -389,6 +400,7 @@ def register():
 		imgdata = request.form['image_hidden']
 		session['tempName'] = name
 		session['tempEmail'] = email
+		print("session['tempEmail']:",session['tempEmail'])
 		session['tempPassword'] = password
 		session['tempUT'] = user_type
 		session['tempImage'] = imgdata
@@ -1832,4 +1844,4 @@ def test_generate():
 			return None
 
 if __name__ == "__main__":
-	app.run(host = "0.0.0.0",debug=False)
+	app.run(host = "0.0.0.0",debug=True)
